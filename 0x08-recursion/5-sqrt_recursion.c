@@ -1,45 +1,32 @@
+#include "holberton.h"
+
 /**
- * _sqrt_recursion_wrapper - a wrapper that does the recursion bit
+ * my_sqrt_recursion - This is my my_sqrt_recursion
+ *                     function about the square root
+ * @a: The entry is equal to n, of the before function
+ * @b: This is the sum
  *
- * @n : input number
- * @min: minimum number to guess
- * @max: maximum number to guess
- *
- * Return: square root of @n or -1
-*/
-int _sqrt_recursion_wrapper(int n, int min, int max)
+ * Return: This is the result
+ */
+int my_sqrt_recursion(int a, int b)
 {
-	int guess, guess_squared;
-
-	guess = (min + max) / 2;		/*get guess (g)*/
-	guess_squared = guess * guess;		/*square guess (sg)*/
-
-	if (guess_squared == n)			/*if squared guess == n return guess*/
-		return (guess);
-	else if (min == max)			/*this means n doesn't have a perfect square*/
+	if (a == (b * b))
+		return (b);
+	else if ((b * b) >= a)
 		return (-1);
-	else if (guess_squared < n)		/*overshoot g if sg is less than the n*/
-		return (_sqrt_recursion_wrapper(n, guess + 1, max));
-	else					/*undershoot g if sg is more than the n*/
-		return (_sqrt_recursion_wrapper(n, min, guess - 1));
+	else
+		return (my_sqrt_recursion(a, b + 1));
 }
 
 /**
- * _sqrt_recursion - a function that returns the natural
- *                   square root of a number
+ * _sqrt_recursion - This is my first function
+ * @n: This is my value
  *
- * @n: input number
- *
- * Return: square root
-*/
+ * Return: This is my result of the function my_sqrt_recursion
+ */
 int _sqrt_recursion(int n)
 {
-	if (n == 1)		/*sqrt(1) == 1*/
-		return (1);
-	else if (n == 0)	/*sqrt(0) == 0*/
-		return (0);
-	else if (n < 0)		/*sqrt(-n) == -1 (NA)*/
+	if (n <= 0)
 		return (-1);
-	else
-		return (_sqrt_recursion_wrapper(n, 1, n));
+	return (my_sqrt_recursion(n, 0));
 }
