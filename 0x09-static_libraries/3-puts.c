@@ -1,19 +1,13 @@
 #include "main.h"
-
 /**
- * _puts - prints a string, followed by a new line,
- * @str: pointer to the string to print
- * Return: void
- */
-
-void _puts(char *str)
+*_islower - controls if a character is in lowercase
+*@c: character to be verified
+*Return: return 0 or 1
+*/
+int _islower(int c)
 {
-	int i = 0;
+if (c >= 'a' && c <= 'z')
+return (1);
 
-	while (str[i])
-	{
-		_putchar(str[i]);
-		i++;
-	}
-	_putchar('\n');
+return (0);
 }
